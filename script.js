@@ -41,6 +41,8 @@ Location.prototype.render = function() {
     const container = document.getElementById("container");
     const table = document.getElementById("table");
 
+
+
     const tr = document.createElement("tr");
     const th = document.createElement("th");
     th.textContent = this.storeName;
@@ -55,6 +57,7 @@ Location.prototype.render = function() {
     const total = document.createElement("th");
     total.textContent = this.totalCookies;
     tr.appendChild(total);
+    
 
     table.appendChild(tr);
     container.appendChild(table);
