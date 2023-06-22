@@ -2,8 +2,14 @@
 
 console.log("hello");
 
+const newStoreForm = document.getElementById("new-store-form");
+
+
 const hours = ["6am", "7am", "8am", "9am", "10am", "11am", "12am", "1pm", "2pm", "3pm", 
 "4pm", "5pm", "6pm", "7pm"];
+
+
+const allStores = [];
 
 function randomNum(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
@@ -64,8 +70,6 @@ Location.prototype.render = function() {
 };
 
 
-
-
 const seattle = new Location("Seattle", "23", "65", "6.3")
 const tokyo = new Location("Tokyo", "3", "24", "1.2")
 const dubai = new Location("Dubai", "11", "38", "3.7")
@@ -78,3 +82,19 @@ console.log(tokyo)
 console.log(dubai)
 console.log(paris)
 console.log(lima)
+
+
+newStoreForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    console.log(event);
+
+    const storeNameInput = event.target.nameInput.value;
+    const minCustInput = event.target.minCustInput.value;
+    const maxCustInput = event.target.maxCustInput.value;
+    const avgCookiesInput = event.target.avgCookiesInput.value;
+
+    const store = new Location(storeNameInput, minCustInput, maxCustInput, avgCookiesInput);
+
+    newStoreForm.reset();
+});

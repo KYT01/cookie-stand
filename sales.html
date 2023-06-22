@@ -18,10 +18,52 @@
             <a href="./index.html">Home</a>
         </div>
 </header>
-    <div id="container"></div>
-    <div class="grid">
-    <table id="table"></table>
+<main>
+    <div id="container">
+    <table id="table">
+        <tr>
+            <td>&nbsp;</td>
+            <td>6am</td>
+            <td>7am</td>
+            <td>8am</td>
+            <td>9am</td>
+            <td>10am</td>
+            <td>11am</td>
+            <td>12am</td>
+            <td>1pm</td>
+            <td>2pm</td>
+            <td>3pm</td>
+            <td>4pm</td>
+            <td>5pm</td>
+            <td>6pm</td>
+            <td>7pm</td>
+            <td>Total</td>
+        </tr>
+    </table>
 </div>
+<div class="form">
+<form id="new-store-form">
+    <fieldset>
+        <legend>Store Infomation</legend>
+
+        <label for="nameInput">Store Name:</label>
+        <input type="text" id="nameInput" name="storeName" placeholder="enter store name" />
+
+        <label for="minCustInput">MinCust:</label>
+        <input type="number" id="minCustInput" minCust="minCust" placeholder="enter min customers" />
+
+        <label for="maxCustInput">MaxCust:</label>
+        <input type="number" id="maxCustInput" maxCust="maxCust" placeholder="enter max customers" />
+
+        <label for="avgCookiesInput">avgCookies</label>
+        <input type="number" id="avgCookiesInput" maxCust="avgCookies" placeholder="enter average cookies" />
+
+        <button id="submit-button" type="submit">SUBMIT</button>
+    </fieldset>
+</form>
+</div>
+</main>
     <script src="script.js"></script>
 </body>
+<footer></footer>
 </html>
