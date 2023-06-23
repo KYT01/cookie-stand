@@ -26,6 +26,8 @@ function Location(storeName, minCust, maxCust, avgCookiesPerHour){
     this.totalCookies = 0;
     this.calculateCookiesPerHour();
     this.render();
+    allStores.push(this);
+
 }
 
 Location.prototype.calculateCustPerHour = function () {
@@ -35,13 +37,14 @@ Location.prototype.calculateCustPerHour = function () {
 };
 
 Location.prototype.calculateCookiesPerHour = function () {
-    this.calculateCustPerHour()
+    this.calculateCustPerHour(); 
     for (let i = 0; i < hours.length; i++) {
-    const cookies = Math.ceil(this.custPerHour[i] * this.avgCookiesPerHour);
-    this.cookiesPerHour.push(cookies);
-    this.totalCookies += cookies;
+        const cookies = Math.ceil(this.custPerHour[i] * this.avgCookiesPerHour);
+        this.cookiesPerHour.push(cookies);
+        this.totalCookies += cookies;
     }
 };
+
 
 Location.prototype.render = function() {
     const container = document.getElementById("container");
@@ -84,6 +87,42 @@ console.log(paris)
 console.log(lima)
 
 
+
+function hourlyTotals() {
+    const table = document.getElementById("table");
+
+    const tr = document.createElement("tr");
+    const th = document.createElement("th");
+    th.textContent = "Hourly Totals";
+    tr.appendChild(th);
+
+    for (let i = 0; i < hours.length; i++) {
+        const th = document.createElement("th");
+        let hoursAdded = 0;
+        
+        for (let j = 0; j < allStores.length; j++) {
+            const hourAmount = allStores[j].cookiesPerHour[i];
+            hoursAdded += hourAmount;
+            
+        }
+        th.textContent = hoursAdded;
+        tr.appendChild(th);
+    }
+
+    let totalTotals = 0;
+    for (let i = 0; i < allStores.length; i++) {
+        totalTotals += allStores[i].totalCookies;
+    }
+
+    const totalsCell = document.createElement("th");
+    totalsCell.textContent = totalTotals;
+    tr.appendChild(totalsCell);
+
+    table.appendChild(tr);
+}
+hourlyTotals();
+
+
 newStoreForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -97,4 +136,4 @@ newStoreForm.addEventListener("submit", function (event) {
     const store = new Location(storeNameInput, minCustInput, maxCustInput, avgCookiesInput);
 
     newStoreForm.reset();
-});
+}); 
